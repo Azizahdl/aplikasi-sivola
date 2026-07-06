@@ -1,0 +1,397 @@
+:root {
+    --primary:      #FF8C42;
+    --primary-dark: #e8650a;
+    --border:       #edeae6;
+    --bg:           #faf7f4;
+    --white:        #ffffff;
+    --muted:        #9a9289;
+    --text:         #1e1b18;
+    --blue:         #2563A8;
+    --blue-bg:      #EBF3FA;
+    --blue-border:  #B5D4F4;
+    --green:        #27500A;
+    --green-bg:     #EAF3DE;
+    --green-border: #97C459;
+    --orange:       #854F0B;
+    --orange-bg:    #FAEEDA;
+    --orange-border:#FAC775;
+}
+
+.materi-page {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+/* ── HERO HEADER ── */
+.hero-header {
+    background: linear-gradient(135deg, #FF8C42 0%, #e8650a 100%);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 20px rgba(255, 140, 66, 0.25);
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hero-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hero-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 3px;
+    line-height: 1.2;
+}
+
+.hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+}
+
+/* ── STEP BAR ── */
+.step-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #c0b8b0;
+    flex: 1;
+}
+
+.step.active {
+    color: var(--primary);
+}
+
+.step.active .step-dot {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+/* Step done (sudah dilewati) */
+.step.done {
+    color: #22c55e;
+}
+
+.step.done .step-dot {
+    background: #22c55e;
+    border-color: #22c55e;
+    color: #fff;
+}
+
+.step-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid #d8d2cb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: #c0b8b0;
+    transition: all 0.2s;
+}
+
+.step-line {
+    flex: 0 0 30px;
+    height: 1px;
+    background: #e8e2db;
+    margin: 0 4px;
+    transition: background 0.3s;
+}
+
+.step-line.filled {
+    background: #22c55e;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+    padding: 10px 14px;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+}
+
+.breadcrumb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    transition: gap 0.15s;
+}
+
+.breadcrumb-back:hover {
+    gap: 2px;
+    text-decoration: none;
+}
+
+.breadcrumb-sep {
+    font-size: 13px;
+    color: #d0c8c0;
+}
+
+.breadcrumb-current {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ── SECTION ── */
+.section-wrap {
+    margin-bottom: 1.75rem;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.section-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: #d0c8c0;
+    letter-spacing: 0.5px;
+    font-family: monospace;
+}
+
+.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.section-badge {
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--bg);
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin-left: auto;
+}
+
+/* ── KATEGORI GRID ── */
+.kategori-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.kategori-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    text-decoration: none;
+    transition: all 0.18s;
+    position: relative;
+    overflow: hidden;
+}
+
+.kategori-card:hover {
+    transform: translateX(3px);
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.k-blue  .k-icon { background: var(--blue-bg);   color: var(--blue);   }
+.k-green .k-icon { background: var(--green-bg);  color: var(--green);  }
+.k-orange .k-icon { background: var(--orange-bg); color: var(--orange); }
+
+.k-blue:hover,  .k-blue.selected  { border-color: var(--blue-border);   background: #f5f9ff; }
+.k-green:hover, .k-green.selected { border-color: var(--green-border);  background: #f5fbee; }
+.k-orange:hover,.k-orange.selected{ border-color: var(--orange-border); background: #fff9f3; }
+
+.kategori-card.selected .k-selected-dot {
+    position: absolute;
+    top: 12px; right: 40px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.k-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.18s;
+}
+
+.kategori-card:hover .k-icon {
+    transform: scale(1.05);
+}
+
+.k-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.k-desc {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.k-arrow {
+    margin-left: auto;
+    color: #c8c0b8;
+    flex-shrink: 0;
+    transition: transform 0.18s, color 0.18s;
+}
+
+.kategori-card:hover .k-arrow,
+.kategori-card.selected .k-arrow {
+    transform: translateX(3px);
+    color: var(--primary);
+}
+
+/* ── MATERI LIST ── */
+.materi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.materi-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 16px;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 11px;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.materi-item:hover {
+    border-color: var(--primary);
+    background: #fff9f5;
+    transform: translateX(3px);
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(255,140,66,0.10);
+}
+
+.materi-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #c8c0b8;
+    font-family: monospace;
+    flex-shrink: 0;
+    width: 22px;
+}
+
+.materi-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.materi-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+}
+
+.materi-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.meta-threshold {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.materi-go {
+    color: #c8c0b8;
+    flex-shrink: 0;
+    transition: transform 0.15s, color 0.15s;
+}
+
+.materi-item:hover .materi-go {
+    transform: translateX(3px);
+    color: var(--primary);
+}
+
+/* ── EMPTY STATE ── */
+.empty-materi {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--muted);
+    background: var(--white);
+    border: 0.5px dashed var(--border);
+    border-radius: 13px;
+}
+
+.empty-materi p {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 576px) {
+    .materi-page { padding: 0 4px 3rem; }
+    .hero-header { border-radius: 12px; padding: 1.25rem; }
+    .hero-title  { font-size: 16px; }
+    .step span   { display: none; }
+    .step-line   { flex: 0 0 16px; }
+    .breadcrumb-wrap { padding: 8px 12px; }
+}

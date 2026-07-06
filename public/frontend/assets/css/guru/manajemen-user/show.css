@@ -1,0 +1,224 @@
+/* ===================================================
+   show.css — Detail Pengguna
+   Path: public/frontend/assets/css/guru/manajemen-user/show.css
+   =================================================== */
+
+:root {
+    --primary:      #FF8C42;
+    --primary-dark: #e8650a;
+    --border:       #ededeb;
+    --bg:           #faf7f4;
+    --white:        #ffffff;
+    --muted:        #8a96a8;
+    --text:         #1C1F2E;
+}
+
+/* ── PAGE WRAPPER ── */
+.show-page {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    max-width: 760px;
+}
+
+/* ── CARD ── */
+.show-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+/* ── HEADER ── */
+.show-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.show-header .head-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+}
+.show-header .head-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 13px;
+    background: var(--bg);
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+}
+.btn-back:hover {
+    background: #f0ece7;
+    color: var(--text);
+}
+
+/* ── BODY ── */
+.show-body {
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* ── LEFT: Avatar Column ── */
+.profile-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    width: 160px;
+}
+
+.avatar-wrap {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--border);
+    flex-shrink: 0;
+}
+.avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatar-initials {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.4;
+}
+.profile-role {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* ── RIGHT: Info Column ── */
+.info-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-section {
+    margin-bottom: 1.25rem;
+}
+.info-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 0.5px solid var(--border);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.info-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 3px;
+}
+.info-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    word-break: break-word;
+}
+.info-value.mono  { font-family: monospace; font-weight: 400; }
+.info-value.muted { color: var(--muted); font-weight: 400; }
+
+/* ── BADGES ── */
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+}
+.b-guru     { background: #EBF3FA; color: #0C447C; }
+.b-siswa    { background: #FFF0E6; color: #e8650a; }
+.b-aktif    { background: #EAF3DE; color: #27500A; }
+.b-nonaktif { background: #FCEBEB; color: #791F1F; }
+.b-suspend  { background: #F1EFE8; color: #444441; }
+
+.dot { width: 5px; height: 5px; border-radius: 50%; display: inline-block; }
+.dot-a { background: #3B6D11; }
+.dot-n { background: #E24B4A; }
+.dot-s { background: #888780; }
+
+/* ── FOOTER ── */
+.show-footer {
+    padding: 1rem 1.5rem;
+    border-top: 0.5px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+.btn-edit:hover {
+    background: var(--primary-dark);
+    color: #fff;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+    .show-body   { flex-direction: column; align-items: center; }
+    .info-grid   { grid-template-columns: 1fr; }
+    .profile-col { width: 100%; }
+}

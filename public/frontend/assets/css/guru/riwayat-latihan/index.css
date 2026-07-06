@@ -1,0 +1,274 @@
+/* === WRAPPER CARD === */
+.riwayat-card {
+    border: 0.5px solid #e5e5e5;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* === HEADER === */
+.card-header-custom {
+    border-bottom: 0.5px solid #efefef;
+}
+
+.header-title h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.header-title small {
+    font-size: 13px;
+    color: #888;
+}
+
+/* === FILTER TOOLBAR PANEL === */
+.filter-toolbar {
+    background: #faf7f4;
+    border-bottom: 0.5px solid #e0e0e0;
+    padding: 14px 1.5rem;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* === FILTER / DROPDOWN STATUS === */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-label {
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+}
+
+.filter-date {
+    border: 0.5px solid #e0e0e0;
+    background: #f7f7f7;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s;
+    min-width: 140px;
+}
+
+.filter-date:hover {
+    background: #f0f0f0;
+}
+
+.filter-date:focus {
+    border-color: #FF8C42;
+    background: #fff;
+}
+
+.btn-reset {
+    font-size: 12px;
+    color: #888;
+    text-decoration: none;
+    background: #f7f7f7;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 999px;
+    padding: 6px 14px;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.btn-reset:hover {
+    background: #f0f0f0;
+    color: #555;
+}
+
+.dropdown-status {
+    border: 0.5px solid #e0e0e0;
+    background: #f7f7f7;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dropdown-status:hover {
+    background: #f0f0f0;
+}
+
+.dropdown-status:focus {
+    border-color: #FF8C42;
+    background: #fff;
+}
+
+/* === EXPORT BUTTON === */
+.btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    background: #EAF3DE;
+    color: #3B6D11;
+    border: 0.5px solid #97C459;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.btn-export:hover {
+    background: #C0DD97;
+    color: #3B6D11;
+}
+
+/* === SEARCH BAR === */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f7f7f7;
+    border-radius: 999px;
+    padding: 6px 10px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    outline: none;
+    flex: 1;
+}
+
+.btn-cari {
+    background: #FF8C42;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 11px;
+}
+
+/* ── SHOW ENTRIES ── */
+.show-row {
+    padding: 8px 1.5rem;
+    border-bottom: 0.5px solid #e0e0e0;
+    background: #faf7f4;
+    font-size: 12px;
+    color: #888;
+}
+
+.show-row select {
+    font-size: 12px;
+    padding: 3px 7px;
+    border: 0.5px solid #e0dbd4;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+/* === TABLE === */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-custom th {
+    font-size: 12px;
+    color: #777;
+    text-align: left;
+    padding: 10px 14px;
+    background: #f7f7f7;
+}
+
+.table-custom td {
+    padding: 12px 14px;
+    border-bottom: 0.5px solid #f0f0f0;
+    font-size: 14px;
+}
+
+.table-custom tr:hover td {
+    background: #fafafa;
+}
+
+/* === BADGE === */
+.badge-valid {
+    background: #EAF3DE;
+    color: #3B6D11;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+.badge-invalid {
+    background: #FCEBEB;
+    color: #A32D2D;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+/* ===== CARD FOOTER / PAGINATION ===== */
+.card-footer-custom {
+    padding: 12px 1.5rem;
+    border-top: 0.5px solid #e0e0e0;
+    background: #faf7f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-info {
+    font-size: 13px;
+    color: #888;
+}
+
+/* === EMPTY STATE === */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #aaa;
+}
+
+/* === PAGINATION === */
+.pagination .page-link {
+    border-radius: 8px ;
+    font-size: 13px;
+    color: #888;
+    border: 0.5px solid #e0e0e0;
+    margin: 0 2px;
+    padding: 5px 11px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #FF8C42;
+    border-color: #FF8C42;
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background-color: #f0f0f0;
+    color: #FF8C42;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+    background-color: #f7f7f7;
+    border-color: #e0e0e0;
+}

@@ -1,0 +1,193 @@
+:root {
+    --primary: #FF8C42;
+    --primary-dark: #e8650a;
+    --primary-light: #FFF0E6;
+    --secondary: #FFB347;
+    --accent: #73A5CA;
+    --accent-light: #EBF3FA;
+    --danger-custom: #e05c2a;
+    --danger-light: #FEF0EA;
+    --dark: #1C1F2E;
+    --text: #2d3344;
+    --muted: #8a96a8;
+    --border: #ede8e2;
+    --bg: #faf7f4;
+    --bar-bg: #f5ede4;
+}
+
+body,
+.db-wrapper {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+}
+
+.db-wrapper {
+    padding: 24px 24px 24px 8px;
+    min-height: 100vh;
+}
+
+/* ===== WELCOME BANNER ===== */
+.welcome-banner {
+    background: linear-gradient(120deg, #e8650a 0%, var(--primary) 50%, var(--secondary) 100%);
+    border-radius: 16px;
+    padding: 1.6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.bdeco {
+    position: absolute;
+    border-radius: 50%;
+    border: 30px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+.bdeco.d1 { width: 220px; height: 220px; right: -50px; top: -70px; }
+.bdeco.d2 { width: 120px; height: 120px; right: 90px; top: 30px; border-width: 20px; }
+.bdeco.d3 { width: 80px;  height: 80px;  left: 40%; bottom: -30px; border-width: 14px; }
+
+.banner-text h2 { font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 5px; }
+.banner-text p  { font-size: 13px; color: rgba(255,255,255,0.82); margin: 0 0 12px; }
+
+.banner-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+}
+
+.banner-badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-align: right;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.banner-badge span   { display: block; font-size: 11px; color: rgba(255,255,255,0.78); margin-bottom: 2px; }
+.banner-badge strong { font-size: 22px; font-weight: 700; color: #fff; }
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+    border: 0.5px solid var(--border) !important;
+    border-radius: 14px !important;
+    background: #fff;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+}
+.stat-card.s-orange::after { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+.stat-card.s-blue::after   { background: var(--accent); }
+.stat-card.s-warn::after   { background: var(--danger-custom); }
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.2px;
+}
+.stat-icon-box {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.stat-value { font-size: 28px; font-weight: 700; color: var(--dark); line-height: 1; }
+.stat-sub   { font-size: 12px; color: var(--muted); margin: 0; }
+.stat-sub .up { color: #3B6D11; font-weight: 600; }
+.stat-sub .dn { color: var(--danger-custom); font-weight: 600; }
+
+/* ===== CHART CARD ===== */
+.chart-card {
+    border: 0.5px solid var(--border) !important;
+    border-radius: 14px !important;
+    background: #fff;
+    padding: 22px;
+    height: 100%;
+}
+.chart-title-text { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+.chart-subtitle   { font-size: 12px; color: var(--muted); }
+
+/* ===== DONUT ===== */
+.donut-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.donut-wrap {
+    position: relative;
+    width: 140px; height: 140px;
+}
+.donut-wrap canvas { width: 140px !important; height: 140px !important; }
+.donut-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+.donut-pct  { font-size: 22px; font-weight: 700; line-height: 1; }
+.donut-desc { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.donut-label { font-size: 13px; font-weight: 600; color: var(--dark); }
+
+.donut-stats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.dstat {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--muted);
+}
+.dstat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dstat strong { font-weight: 600; color: var(--dark); }
+
+/* ===== LEGEND ===== */
+.chart-legend {
+    display: flex; gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #6b7685; }
+.legend-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* ===== SIDE CARD ===== */
+.side-card {
+    border: 0.5px solid var(--border) !important;
+    border-radius: 14px !important;
+    background: #fff;
+    padding: 18px 20px;
+}
+.side-card-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
+
+/* ===== PROGRESS ===== */
+.prog-top { display: flex; justify-content: space-between; font-size: 12px; color: #6b7685; margin-bottom: 6px; }
+.prog-top span:last-child { font-weight: 600; color: var(--dark); }
+.prog-bg { height: 7px; background: var(--bar-bg); border-radius: 999px; overflow: hidden; }
+.prog-fill { height: 100%; border-radius: 999px; }
+
+/* ===== ACTIVITY ===== */
+.act-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 9px 0;
+    border-bottom: 0.5px solid var(--bar-bg);
+}
+.act-row:last-child { border-bottom: none; padding-bottom: 0; }
+.act-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.act-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.act-mat  { font-size: 12px; color: var(--muted); margin-top: 1px; }
+.act-time { font-size: 11px; color: #b0bac8; margin-top: 2px; }
+
+/* ===== SCORE BADGE ===== */
+.score-badge {
+    display: inline-flex; align-items: center;
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; flex-shrink: 0;
+}
+.score-lulus  { background: #FFF0E6; color: #e8650a; }
+.score-baik   { background: #EBF3FA; color: #3a78a8; }
+.score-kurang { background: #FEF0EA; color: #e05c2a; }

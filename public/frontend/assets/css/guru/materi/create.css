@@ -1,0 +1,237 @@
+/* =====================================================
+   CREATE MATERI — Modern Clean
+   File: public/frontend/assets/css/guru/materi/create.css
+===================================================== */
+
+:root {
+    --primary:       #FF8C42;
+    --primary-dark:  #e8650a;
+    --primary-light: #FFF0E6;
+    --border:        #ededeb;
+    --bg:            #faf7f4;
+    --white:         #ffffff;
+    --muted:         #8a96a8;
+    --text:          #1C1F2E;
+    --danger:        #e05c2a;
+    --danger-light:  #FEF0EA;
+}
+
+/* ── WRAPPER ── */
+.create-page {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    max-width: 720px;
+}
+
+/* ── CARD ── */
+.create-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+/* ── HEADER ── */
+.create-card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-card-header .header-title h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 3px;
+}
+
+.create-card-header .header-title small {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--bg);
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+}
+.btn-back:hover {
+    background: #ede8e2;
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* ── BODY FORM ── */
+.create-card-body {
+    padding: 1.75rem 1.5rem;
+}
+
+/* ── FORM GROUP ── */
+.form-group-custom {
+    margin-bottom: 1.25rem;
+}
+
+.form-label-custom {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: .5rem;
+}
+
+.form-label-custom .req {
+    color: var(--danger);
+    margin-left: 2px;
+}
+
+.form-label-custom small {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    margin-left: 5px;
+}
+
+/* ── INPUT & TEXTAREA & SELECT ── */
+.input-custom,
+.textarea-custom,
+.select-custom {
+    width: 100%;
+    background: #faf7f4;
+    border: 0.5px solid #e0dbd4;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font-size: 13px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color .15s, background .15s, box-shadow .15s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.input-custom:focus,
+.textarea-custom:focus,
+.select-custom:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(255,140,66,.1);
+}
+
+.input-custom.is-invalid,
+.textarea-custom.is-invalid,
+.select-custom.is-invalid {
+    border-color: var(--danger);
+    background: var(--danger-light);
+}
+
+.textarea-custom {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Select arrow custom */
+.select-wrap {
+    position: relative;
+}
+.select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--muted);
+    pointer-events: none;
+}
+.select-custom {
+    padding-right: 32px;
+    cursor: pointer;
+}
+
+/* ── ERROR MESSAGE ── */
+.error-msg {
+    font-size: 11px;
+    color: var(--danger);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ── THRESHOLD HELPER ── */
+.threshold-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--muted);
+}
+.threshold-hint svg { opacity: .5; flex-shrink: 0; }
+
+/* ── DIVIDER ── */
+.form-divider {
+    border: none;
+    border-top: 0.5px dashed #e0dbd4;
+    margin: 1.5rem 0;
+}
+
+/* ── FOOTER ── */
+.create-card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 0.5px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .75rem;
+}
+
+.btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: transparent;
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s;
+}
+.btn-cancel:hover { background: #ede8e2; color: var(--text); text-decoration: none; }
+
+.btn-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s, transform .1s;
+}
+.btn-save:hover { background: var(--primary-dark); }
+.btn-save:active { transform: scale(.97); }
