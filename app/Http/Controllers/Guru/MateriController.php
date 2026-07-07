@@ -46,7 +46,7 @@ class MateriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'teks_bacaan' => 'required|string',
+            'teks_bacaan' => 'required|string|unique:materi,teks_bacaan',
             'kategori'    => 'required|string|max:255',
         ]);
 
@@ -78,7 +78,7 @@ class MateriController extends Controller
         $materi = Materi::findOrFail($id);
 
         $request->validate([
-            'teks_bacaan' => 'required|string',
+            'teks_bacaan' => 'required|string|unique:materi,teks_bacaan,' . $id . ',id_materi',
             'kategori'    => 'required|in:abjad,suku_kata,kata_dasar',
             'threshold'   => 'required|numeric|min:0|max:1',
         ]);
