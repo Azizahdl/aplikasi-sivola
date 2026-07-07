@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('materi', function (Blueprint $table) {
             $table->id('id_materi'); 
-            $table->string('teks_bacaan'); 
+            $table->string('teks_bacaan')->unique(); 
             $table->enum('tipe_materi', ['huruf', 'suku_kata', 'kata_dasar'])->nullable();
             $table->json('vektor_referensi')->nullable(); 
             $table->float('threshold')->default(0.75); 
