@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
-    {{-- <title>@yield('title', 'Sistem Validasi')</title> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SIVOLA</title>
 
     <link rel="shortcut icon" type="image/png" href="{{ asset('layout/src/assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -190,6 +190,11 @@
 
         @media (max-width: 576px) {
             .card-login { padding: 1.5rem 1.25rem; }
+        }
+        @media (max-width: 400px) {
+            body { padding: 1.5rem 0.75rem; }
+            .card-login { padding: 1.25rem 1rem; border-radius: 24px; }
+            .logo-area img { max-width: 60px; }
         }
     </style>
 </head>

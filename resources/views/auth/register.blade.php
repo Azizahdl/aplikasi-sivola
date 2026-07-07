@@ -193,6 +193,12 @@
         @media (max-width: 576px) {
             .card-register { padding: 1.5rem 1.25rem; }
         }
+
+        @media (max-width: 400px) {
+            body { padding: 1.5rem 0.75rem; }
+            .card-register { padding: 1.25rem 1rem; border-radius: 24px; }
+            .logo-area img { max-width: 60px; }
+        }
     </style>
 </head>
 

@@ -150,6 +150,7 @@
     outline: none;
     flex: 1;
 }
+
 .btn-cari {
     background: #FF8C42;
     color: white;
@@ -260,7 +261,7 @@
 
 /* === PAGINATION === */
 .pagination .page-link {
-    border-radius: 8px ;
+    border-radius: 8px;
     font-size: 13px;
     color: #888;
     border: 0.5px solid #e0e0e0;
@@ -284,6 +285,7 @@
     background-color: #f7f7f7;
     border-color: #e0e0e0;
 }
+
 /* ══════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════ */
@@ -332,6 +334,13 @@
 @media (max-width: 576px) {
     .riwayat-card {
         border-radius: 10px;
+    }
+
+    /* Header: judul & tombol Ekspor ditumpuk vertikal, bukan sejajar sempit */
+    .card-header-custom .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 10px;
     }
 
     .btn-export {
@@ -403,7 +412,7 @@
         align-items: flex-start;
     }
 
-    .card-footer-custom > div:last-child {
+    .card-footer-custom>div:last-child {
         width: 100%;
         display: flex;
         justify-content: center;
