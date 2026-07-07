@@ -135,9 +135,11 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">
+
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                 <i class="ti-settings text-primary"></i> Pengaturan
                             </a>
+
                             <a class="dropdown-item" href="#"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="ti-power-off text-primary"></i> Logout
