@@ -24,17 +24,15 @@ class RiwayatLatihanController extends Controller
         }
 
         // Fitur Pencarian: Bisa cari berdasarkan Nama Siswa atau Teks Materi
-        // Dibungkus where(function...) supaya tidak "bocor" ke filter lain (status/tanggal)
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->whereHas('siswa', function ($q2) use ($search) {
-                    $q2->where('nama', 'like', "%{$search}%")
-                       ->orWhere('nomor_induk', 'like', "%{$search}%");
+                    $q2->where('nama', 'like', "%{$search}%"); // Hanya cari nama
                 })->orWhereHas('materi', function ($q2) use ($search) {
                     $q2->where('teks_bacaan', 'like', "%{$search}%");
                 });
-            });
+             });
         }
 
         // Fitur Filter Status (Benar / Salah)

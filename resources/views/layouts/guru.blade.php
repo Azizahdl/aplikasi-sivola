@@ -22,6 +22,8 @@
 
     @stack('styles')
 
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/global-responsive.css') }}">
+
     {{-- Fallback font agar layout tidak lompat --}}
     <style>
         body,

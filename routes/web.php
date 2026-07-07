@@ -10,7 +10,9 @@ use App\Http\Controllers\Siswa\MateriSiswaController;
 use App\Http\Controllers\Siswa\ValidasiMateriController;
 use App\Http\Controllers\Siswa\SiswaRiwayatLatihanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::middleware('auth')->group(function () {
@@ -18,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::get('/', function () {
     // 1. Cek apakah user SUDAH login
@@ -33,6 +36,12 @@ Route::get('/', function () {
     // 3. Jika BELUM login, baru suruh ke halaman login
     return redirect()->route('login');
 });
+Route::get('/dashboard', function () {
+    if (Auth::user()->role === 'guru') {
+        return redirect()->route('guru.dashboard');
+    }
+    return redirect()->route('siswa.dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 //ROLE GURU
 Route::prefix('guru')->middleware(['auth', 'role:guru'])->group(function () {

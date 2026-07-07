@@ -1,0 +1,139 @@
+/* =====================================================================
+   GLOBAL RESPONSIVE CSS
+   Include file ini SEKALI di layout utama (mis. layouts/guru.blade.php)
+   supaya otomatis berlaku ke SEMUA halaman yang extend layout tsb.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. RESET DASAR & BOX SIZING
+--------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ---------------------------------------------------------------------
+   2. GAMBAR & MEDIA SELALU RESPONSIF
+--------------------------------------------------------------------- */
+img, video, canvas, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+svg {
+    max-width: 100%;
+    height: auto;
+    /* sengaja TIDAK dikasih display:block, biar icon kecil yang
+       nempel sejajar sama teks (pakai vertical-align / inline-flex)
+       tetap jalan normal */
+}
+
+/* ---------------------------------------------------------------------
+   3. CONTAINER
+--------------------------------------------------------------------- */
+.container,
+.container-fluid {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* ---------------------------------------------------------------------
+   4. TABEL
+--------------------------------------------------------------------- */
+.table-responsive {
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    table th,
+    table td {
+        white-space: nowrap;
+        font-size: 13px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   5. FORM ELEMENTS
+--------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   6. UTILITY: STACK DI MOBILE
+--------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    .stack-mobile {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px;
+    }
+
+    .stack-mobile > * {
+        width: 100%;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   7. UTILITY: FULL WIDTH DI MOBILE
+--------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    .full-mobile {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   8. UTILITY: SEMBUNYIKAN / TAMPILKAN BERDASARKAN LAYAR
+--------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 577px) {
+    .show-mobile-only { display: none !important; }
+}
+
+/* ---------------------------------------------------------------------
+   9. CARD / PANEL UMUM
+--------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    .card,
+    [class$="-card"] {
+        border-radius: 10px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   10. TYPOGRAFI DASAR RESPONSIF
+--------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    h1 { font-size: 22px; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 18px; }
+    h4 { font-size: 16px; }
+}
+

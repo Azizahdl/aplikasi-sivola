@@ -99,6 +99,34 @@
                 </div>
             </div>
         </div>
+        {{-- GRAFIK AKTIVITAS MEMBACA --}}
+        <div class="row g-3 mb-3">
+            <div class="col-12">
+                <div class="main-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+                        <div>
+                            <div class="card-title">Grafik Aktivitas Membaca Saya</div>
+                            <div class="card-sub">Tren mingguan (±12 minggu / 3 bulan) menuju ujian</div>
+                        </div>
+                        <div class="chart-toggle">
+                            <button type="button" class="chart-toggle-btn active" id="btnToggleUts" onclick="switchPerkembangan('uts', this)">Menuju UTS</button>
+                            <button type="button" class="chart-toggle-btn" id="btnToggleUas" onclick="switchPerkembangan('uas', this)">Menuju UAS</button>
+                        </div>
+                    </div>
+
+                    <div style="position:relative; height:280px;">
+                        <canvas id="perkembanganChart"></canvas>
+                    </div>
+
+                    <div class="chart-legend mt-3">
+                        <div class="legend-item">
+                            <div class="legend-dot" id="perkembanganLegendDot" style="background:#73A5CA;"></div>
+                            <span id="perkembanganLegendLabel">Skor Saya — Menuju UTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {{-- BOTTOM --}}
         <div class="row g-3">
@@ -168,6 +196,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('[data-width]').forEach(el => {
@@ -176,5 +205,73 @@
                 }, 300);
             });
         });
+
+        // ===== GRAFIK AKTIVITAS MEMBACA: TOGGLE MENUJU UTS / MENUJU UAS =====
+        @php
+            $weeklyLabelsJs  = $weeklyLabels  ?? collect(range(1, 12))->map(fn($i) => "Minggu {$i}")->values()->all();
+            $dataMenujuUTSJs = $dataMenujuUTS ?? [55, 58, 60, 62, 65, 67, 68, 70, 72, 74, 76, 78];
+            $dataMenujuUASJs = $dataMenujuUAS ?? [70, 73, 75, 77, 79, 81, 83, 85, 86, 88, 90, 92];
+        @endphp
+        const weeklyLabels  = @json($weeklyLabelsJs);
+        const dataMenujuUTS = @json($dataMenujuUTSJs);
+        const dataMenujuUAS = @json($dataMenujuUASJs);
+
+        const perkembanganColors = {
+            uts: { border: '#73A5CA', bg: 'rgba(115,165,202,0.12)' },
+            uas: { border: '#3B9E5F', bg: 'rgba(59,158,95,0.12)' },
+        };
+        const perkembanganDatasets = {
+            uts: { label: 'Menuju UTS', data: dataMenujuUTS },
+            uas: { label: 'Menuju UAS', data: dataMenujuUAS },
+        };
+
+        const perkembanganChart = new Chart(document.getElementById('perkembanganChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: weeklyLabels,
+                datasets: [{
+                    label: perkembanganDatasets.uts.label,
+                    data: perkembanganDatasets.uts.data,
+                    borderColor: perkembanganColors.uts.border,
+                    backgroundColor: perkembanganColors.uts.bg,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: perkembanganColors.uts.border,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' }, grid: { color: '#f0ece6' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        function switchPerkembangan(target, btnEl) {
+            const cfg = perkembanganColors[target];
+            const ds  = perkembanganDatasets[target];
+            const dataset = perkembanganChart.data.datasets[0];
+            dataset.label = ds.label;
+            dataset.data = ds.data;
+            dataset.borderColor = cfg.border;
+            dataset.backgroundColor = cfg.bg;
+            dataset.pointBackgroundColor = cfg.border;
+            perkembanganChart.update();
+
+            document.querySelectorAll('.chart-toggle-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+
+            document.getElementById('perkembanganLegendDot').style.background = cfg.border;
+            document.getElementById('perkembanganLegendLabel').textContent = 'Skor Saya — ' + ds.label;
+        }
     </script>
 @endsection

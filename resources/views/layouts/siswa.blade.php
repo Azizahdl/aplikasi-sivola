@@ -23,9 +23,33 @@
     <!-- endinject -->
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     @stack('styles')
+
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/global-responsive.css') }}">
+
+    <style>
+        /* Dropdown profil: ukuran ngikutin isi, jangan kepanjangan */
+        .navbar-dropdown {
+            min-width: 160px !important;
+            /* Berikan lebar minimal yang ideal */
+            width: auto !important;
+            max-width: 240px !important;
+            /* Batasi lebar maksimalnya */
+            padding: 8px 0 !important;
+            left: auto !important;
+            /* Batalkan kalkulasi posisi kiri otomatis */
+            right: 0 !important;
+            /* Paksa dropdown menempel rata di kanan tombol profil */
+        }
+
+        .navbar-dropdown .dropdown-item {
+            padding: 8px 16px !important;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,7 +95,6 @@
                     </li>
                 </ul> --}}
 
-                <!-- Profile menu -->
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
@@ -79,9 +102,11 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">
+
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                 <i class="ti-settings text-primary"></i> Pengaturan
                             </a>
+
                             <a class="dropdown-item" href="#"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="ti-power-off text-primary"></i> Logout

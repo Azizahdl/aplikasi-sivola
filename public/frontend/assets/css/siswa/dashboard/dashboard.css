@@ -144,3 +144,145 @@ body, .db-wrapper {
     color:var(--muted); font-size:13px;
 }
 .empty-state svg { opacity:.25; margin-bottom:.5rem; }
+/* ── CHART TOGGLE ── */
+.chart-toggle {
+    display: inline-flex;
+    background: var(--bar-bg);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+}
+
+.chart-toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chart-toggle-btn:hover {
+    color: var(--dark);
+}
+
+.chart-toggle-btn.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ── CHART LEGEND ── */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ── RESPONSIVE: grafik ── */
+@media (max-width: 576px) {
+    .db-wrapper {
+        padding: 1rem;
+    }
+
+    /* Banner: dekorasi lingkaran dikecilin & dipindah biar nggak nutupin teks */
+    .welcome-banner {
+        padding: 1.25rem 1.25rem;
+    }
+
+    .bdeco.d1 {
+        width: 120px;
+        height: 120px;
+        right: -30px;
+        top: -40px;
+    }
+
+    .bdeco.d2 {
+        display: none;
+    }
+
+    .banner-text h2 {
+        font-size: 16px;
+    }
+
+    .banner-text p {
+        font-size: 12px;
+    }
+
+    .btn-cta {
+        font-size: 12px;
+        padding: 7px 14px;
+    }
+
+    /* Stat cards: angka & padding dikecilin biar muat di 2 kolom kecil */
+    .stat-card {
+        padding: 12px 14px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .stat-icon-box {
+        width: 28px;
+        height: 28px;
+    }
+
+    .stat-icon-box svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .stat-sub {
+        font-size: 11px;
+    }
+
+    /* Main card (progress & riwayat) */
+    .card-title {
+        font-size: 13px;
+    }
+
+    .card-sub {
+        font-size: 11.5px;
+        margin-bottom: 12px;
+    }
+
+    /* Riwayat row: skor badge jangan sampai nabrak nama materi panjang */
+    .act-name {
+        font-size: 12.5px;
+        word-break: break-word;
+    }
+
+    .act-meta {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+    /* Di HP super kecil, stat cards jadi 1 kolom penuh biar nggak kegencet parah */
+    .row.g-3.mb-3 > [class*="col-6"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

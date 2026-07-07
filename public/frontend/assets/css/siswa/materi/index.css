@@ -386,12 +386,85 @@
     margin-top: 10px;
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 576px) {
     .materi-page { padding: 0 4px 3rem; }
-    .hero-header { border-radius: 12px; padding: 1.25rem; }
-    .hero-title  { font-size: 16px; }
+
+    /* Hero header */
+    .hero-header {
+        border-radius: 12px;
+        padding: 1.1rem 1.25rem;
+    }
+
+    .hero-inner {
+        gap: 10px;
+    }
+
+    .hero-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 11px;
+    }
+
+    .hero-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .hero-title  { font-size: 15px; }
+    .hero-sub    { font-size: 12px; }
+
+    /* Step bar */
     .step span   { display: none; }
     .step-line   { flex: 0 0 16px; }
-    .breadcrumb-wrap { padding: 8px 12px; }
+    .step-bar    { padding: 0.85rem 1rem; }
+
+    /* Breadcrumb */
+    .breadcrumb-wrap {
+        padding: 8px 12px;
+        flex-wrap: wrap;
+    }
+
+    .breadcrumb-current {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 55%;
+    }
+
+    /* Section heading */
+    .section-title { font-size: 14px; }
+
+    .section-badge {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+
+    /* Kategori cards */
+    .kategori-card {
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .k-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .k-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .k-name { font-size: 13px; }
+    .k-desc { font-size: 11px; }
+
+    /* Materi list item */
+    .materi-item {
+        padding: 11px 13px;
+        gap: 10px;
+    }
+
+    .materi-text { font-size: 13px; }
+    .meta-threshold { font-size: 10.5px; }
 }

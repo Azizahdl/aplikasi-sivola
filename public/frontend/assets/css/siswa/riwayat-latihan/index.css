@@ -149,6 +149,20 @@
     background: #e87830;
 }
 
+.rl-filter-form {
+    width: 100%;
+}
+
+.rl-select {
+    flex: 1 1 150px;
+    min-width: 130px;
+}
+
+.rl-search {
+    flex: 2 1 240px;
+    min-width: 220px;
+}
+
 /* === SHOW ENTRIES === */
 .rl-show-row {
     padding: 8px 20px;
@@ -356,14 +370,135 @@
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+    .rl-select,
+    .rl-search {
+        height: 42px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+    }
+
+    .rl-select {
+        padding: 0 14px;
+    }
+    .rl-banner {
+        padding: 18px 20px;
+    }
+
+    .rl-banner-title {
+        font-size: 17px;
+    }
+
+    .rl-banner-sub {
+        font-size: 12px;
+    }
+
+    .rl-banner-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+
     .rl-stats-row {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
-    .rl-filter-row form {
-        flex-direction: column;
-        align-items: stretch !important;
+
+    .rl-stat-card {
+        padding: 12px 14px;
+        gap: 10px;
     }
+
+    .rl-stat-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .rl-stat-num {
+        font-size: 18px;
+    }
+
+    /* Form filter: grid 2 kolom biar rapi & nggak makan tempat vertikal */
+    .rl-card > .d-flex.flex-wrap {
+        padding: 1rem !important;
+    }
+
+    .rl-card form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .rl-select {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+    }
+
+    /* Search bar full width, ambil 2 kolom (baris sendiri di bawah) */
     .rl-search {
-        min-width: unset;
+        grid-column: 1 / -1;
+        width: 100%;
+        margin: 0;
+    }
+
+    .rl-search .rl-btn-cari {
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    /* Tombol Reset (kalau muncul), full width di baris sendiri di bawah */
+    form > .rl-btn-cari {
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: center;
+        padding: 9px 13px;
+    }
+
+    /* Tabel dikecilin */
+    .rl-table th,
+    .rl-table td {
+        padding: 10px 10px;
+        font-size: 12px;
+    }
+
+    .rl-skor-wrap {
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .rl-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .rl-banner-icon {
+        align-self: flex-end;
+        margin-top: -40px;
+    }
+
+    /* Stats jadi 1 kolom biar nggak kegencet */
+    .rl-stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Sembunyiin kolom Kategori di HP super kecil biar tabel nggak terlalu sesak */
+    .rl-table th:nth-child(4),
+    .rl-table td:nth-child(4) {
+        display: none;
+    }
+
+    .card-footer-custom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-footer-custom > div:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }

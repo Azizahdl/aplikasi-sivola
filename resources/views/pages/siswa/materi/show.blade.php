@@ -43,15 +43,14 @@
                 <span class="kategori-badge kategori-{{ strtolower(str_replace('_', '-', $materi->kategori)) }}">
                     {{ ucfirst(str_replace('_', ' ', $materi->kategori)) }}
                 </span>
-                <span class="threshold-info">
-                    <svg width="13" height="13" fill="none" viewBox="0 0 16 16">
-                        <path d="M8 2l1.8 3.6L14 6.4l-3 2.9.7 4.1L8 11.3l-3.7 2.1.7-4.1L2 6.4l4.2-.8L8 2z"
-                            stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
+                <a href="{{ route('siswa.materi.kategori', $materi->kategori) }}" class="btn-back-top">
+                    <svg width="14" height="14" fill="none" viewBox="0 0 16 16">
+                        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
-                    Target {{ $materi->threshold * 100 }}%
-                </span>
+                    Kembali
+                </a>
             </div>
-
             {{-- TEKS BACAAN --}}
             <div class="instruction-text">Ucapkan teks berikut dengan jelas:</div>
             <div class="teks-bacaan">{{ $materi->teks_bacaan }}</div>
@@ -136,16 +135,6 @@
 
         </div>
 
-        <div class="back-wrap">
-            <a href="{{ route('siswa.materi.kategori', $materi->kategori) }}" class="btn-back">
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
-                    <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-                Kembali ke Daftar Materi
-            </a>
-        </div>
-
     </div>
 
     {{-- LOADING OVERLAY --}}
@@ -182,8 +171,8 @@
                     <svg width="15" height="15" fill="none" viewBox="0 0 24 24">
                         <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
-                        <path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     Coba Lagi
                 </button>
@@ -205,48 +194,48 @@
             'use strict';
 
             // ── Elemen ───────────────────────────────────────────────────────
-            const btnMulai      = document.getElementById('btn-mulai');
-            const btnStop       = document.getElementById('btn-stop');
-            const timerDisplay  = document.getElementById('timer-display');
-            const micError      = document.getElementById('mic-error');
-            const micErrorMsg   = document.getElementById('mic-error-msg');
-            const statusIdle    = document.getElementById('status-idle');
+            const btnMulai = document.getElementById('btn-mulai');
+            const btnStop = document.getElementById('btn-stop');
+            const timerDisplay = document.getElementById('timer-display');
+            const micError = document.getElementById('mic-error');
+            const micErrorMsg = document.getElementById('mic-error-msg');
+            const statusIdle = document.getElementById('status-idle');
             const statusRecording = document.getElementById('status-recording');
-            const statusProc    = document.getElementById('status-processing');
+            const statusProc = document.getElementById('status-processing');
             const loadingOverlay = document.getElementById('loading-overlay');
-            const loadingText   = document.getElementById('loading-text');
-            const hasilOverlay  = document.getElementById('hasil-overlay');
-            const hasilCard     = document.getElementById('hasil-card');
+            const loadingText = document.getElementById('loading-text');
+            const hasilOverlay = document.getElementById('hasil-overlay');
+            const hasilCard = document.getElementById('hasil-card');
             const hasilIconWrap = document.getElementById('hasil-icon-wrap');
-            const hasilLabel    = document.getElementById('hasil-label');
+            const hasilLabel = document.getElementById('hasil-label');
             const hasilSublabel = document.getElementById('hasil-sublabel');
-            const skorNumber    = document.getElementById('skor-number');
-            const skorBarFill   = document.getElementById('skor-bar-fill');
+            const skorNumber = document.getElementById('skor-number');
+            const skorBarFill = document.getElementById('skor-bar-fill');
             const thresholdText = document.getElementById('threshold-text');
-            const btnCobaLagi   = document.getElementById('btn-coba-lagi');
-            const btnLanjut     = document.getElementById('btn-lanjut');
+            const btnCobaLagi = document.getElementById('btn-coba-lagi');
+            const btnLanjut = document.getElementById('btn-lanjut');
 
             // ── Data dari server ─────────────────────────────────────────────
-            const idMateri      = document.getElementById('js-id-materi').textContent.trim();
-            const teksBacaan    = document.getElementById('js-teks-bacaan').textContent.trim();
-            const csrfToken     = document.getElementById('js-csrf').textContent.trim();
+            const idMateri = document.getElementById('js-id-materi').textContent.trim();
+            const teksBacaan = document.getElementById('js-teks-bacaan').textContent.trim();
+            const csrfToken = document.getElementById('js-csrf').textContent.trim();
             const routeValidasi = document.getElementById('js-route-validasi').textContent.trim();
-            const routeKembali  = document.getElementById('js-route-kembali').textContent.trim();
+            const routeKembali = document.getElementById('js-route-kembali').textContent.trim();
 
             // ── State ─────────────────────────────────────────────────────────
             let mediaRecorder = null;
-            let audioChunks   = [];
+            let audioChunks = [];
             let timerInterval = null;
-            let seconds       = 0;
+            let seconds = 0;
 
             // ── Helpers ───────────────────────────────────────────────────────
             const showBtn = el => el.style.display = 'inline-flex';
-            const hideEl  = el => el.style.display = 'none';
+            const hideEl = el => el.style.display = 'none';
 
             function showStatus(name) {
-                statusIdle.style.display      = 'none';
+                statusIdle.style.display = 'none';
                 statusRecording.style.display = 'none';
-                statusProc.style.display      = 'none';
+                statusProc.style.display = 'none';
                 document.getElementById('status-' + name).style.display = 'flex';
             }
 
@@ -263,30 +252,42 @@
                 }, 1000);
             }
 
-            function stopTimer() { clearInterval(timerInterval); }
+            function stopTimer() {
+                clearInterval(timerInterval);
+            }
 
             function showError(msg) {
                 micErrorMsg.textContent = msg || 'Terjadi kesalahan.';
-                micError.style.display  = 'flex';
+                micError.style.display = 'flex';
             }
 
-            function hideError() { hideEl(micError); }
+            function hideError() {
+                hideEl(micError);
+            }
 
             function showLoading(msg) {
                 loadingText.textContent = msg || 'Memproses...';
                 loadingOverlay.classList.add('show');
             }
 
-            function hideLoading() { loadingOverlay.classList.remove('show'); }
+            function hideLoading() {
+                loadingOverlay.classList.remove('show');
+            }
 
             // ── Sound (Web Audio API) ─────────────────────────────────────────
             function playSound(type) {
                 try {
-                    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                    const ctx = new(window.AudioContext || window.webkitAudioContext)();
                     if (type === 'benar') {
-                        [[261.6, 0], [329.6, .12], [392, .24]].forEach(([freq, delay]) => {
-                            const osc = ctx.createOscillator(), gain = ctx.createGain();
-                            osc.connect(gain); gain.connect(ctx.destination);
+                        [
+                            [261.6, 0],
+                            [329.6, .12],
+                            [392, .24]
+                        ].forEach(([freq, delay]) => {
+                            const osc = ctx.createOscillator(),
+                                gain = ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(ctx.destination);
                             osc.type = 'sine';
                             osc.frequency.value = freq;
                             gain.gain.setValueAtTime(0, ctx.currentTime + delay);
@@ -296,9 +297,14 @@
                             osc.stop(ctx.currentTime + delay + .5);
                         });
                     } else {
-                        [[300, 0], [220, .18]].forEach(([freq, delay]) => {
-                            const osc = ctx.createOscillator(), gain = ctx.createGain();
-                            osc.connect(gain); gain.connect(ctx.destination);
+                        [
+                            [300, 0],
+                            [220, .18]
+                        ].forEach(([freq, delay]) => {
+                            const osc = ctx.createOscillator(),
+                                gain = ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(ctx.destination);
                             osc.type = 'sawtooth';
                             osc.frequency.value = freq;
                             gain.gain.setValueAtTime(0, ctx.currentTime + delay);
@@ -315,21 +321,21 @@
             function ucapkanHasil(benar) {
                 if (!window.speechSynthesis) return;
                 window.speechSynthesis.cancel();
-                const pesan = benar
-                    ? 'Benar! Pengucapanmu sudah tepat. Bagus sekali!'
-                    : 'Salah! Pengucapanmu belum tepat. Yuk coba lagi!';
-                const ucap    = new SpeechSynthesisUtterance(pesan);
-                ucap.lang     = 'id-ID';
-                ucap.rate     = 0.95;
-                ucap.pitch    = benar ? 1.2 : 0.9;
-                ucap.volume   = 1;
+                const pesan = benar ?
+                    'Benar! Pengucapanmu sudah tepat. Bagus sekali!' :
+                    'Salah! Pengucapanmu belum tepat. Yuk coba lagi!';
+                const ucap = new SpeechSynthesisUtterance(pesan);
+                ucap.lang = 'id-ID';
+                ucap.rate = 0.95;
+                ucap.pitch = benar ? 1.2 : 0.9;
+                ucap.volume = 1;
                 window.speechSynthesis.speak(ucap);
             }
 
             // ── Confetti ──────────────────────────────────────────────────────
             function launchConfetti() {
                 const container = document.getElementById('confetti-container');
-                const colors = ['#22c55e','#86efac','#bbf7d0','#fbbf24','#a78bfa','#60a5fa'];
+                const colors = ['#22c55e', '#86efac', '#bbf7d0', '#fbbf24', '#a78bfa', '#60a5fa'];
                 for (let i = 0; i < 28; i++) {
                     const dot = document.createElement('div');
                     dot.className = 'confetti-dot';
@@ -343,37 +349,39 @@
                     `;
                     container.appendChild(dot);
                 }
-                setTimeout(() => { container.innerHTML = ''; }, 2200);
+                setTimeout(() => {
+                    container.innerHTML = '';
+                }, 2200);
             }
 
             // ── Tampilkan hasil ───────────────────────────────────────────────
             function tampilkanHasil(data) {
                 const benar = data.status === 'benar';
-                const skor  = parseFloat(data.skor) || 0;
-                const thr   = parseFloat(data.threshold) || 0;
+                const skor = parseFloat(data.skor) || 0;
+                const thr = parseFloat(data.threshold) || 0;
 
                 hasilCard.className = `hasil-card ${data.status}`;
 
-                hasilIconWrap.innerHTML = benar
-                    ? `<svg width="52" height="52" fill="none" viewBox="0 0 24 24">
+                hasilIconWrap.innerHTML = benar ?
+                    `<svg width="52" height="52" fill="none" viewBox="0 0 24 24">
                          <circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="1.5"/>
                          <path d="M7 12l4 4 6-6" stroke="#22c55e" stroke-width="2.5"
                                stroke-linecap="round" stroke-linejoin="round"/>
-                       </svg>`
-                    : `<svg width="52" height="52" fill="none" viewBox="0 0 24 24">
+                       </svg>` :
+                    `<svg width="52" height="52" fill="none" viewBox="0 0 24 24">
                          <circle cx="12" cy="12" r="10" stroke="#ef4444" stroke-width="1.5"/>
                          <path d="M15 9l-6 6M9 9l6 6" stroke="#ef4444" stroke-width="2.5"
                                stroke-linecap="round" stroke-linejoin="round"/>
                        </svg>`;
 
-                hasilLabel.textContent    = benar ? 'Benar!' : 'Salah!';
-                hasilSublabel.textContent = benar
-                    ? 'Pengucapanmu sudah tepat. Bagus sekali!'
-                    : 'Pengucapanmu belum tepat. Yuk coba lagi!';
+                hasilLabel.textContent = benar ? 'Benar!' : 'Salah!';
+                hasilSublabel.textContent = benar ?
+                    'Pengucapanmu sudah tepat. Bagus sekali!' :
+                    'Pengucapanmu belum tepat. Yuk coba lagi!';
                 thresholdText.textContent = `Target minimal ${thr}%`;
 
-                skorNumber.textContent    = '0%';
-                skorBarFill.style.width   = '0%';
+                skorNumber.textContent = '0%';
+                skorBarFill.style.width = '0%';
                 hasilOverlay.classList.add('show');
 
                 // Animasi bar
@@ -385,6 +393,7 @@
 
                 // Animasi angka
                 const start = performance.now();
+
                 function animateSkor(now) {
                     const p = Math.min((now - start) / 1000, 1);
                     const e = 1 - Math.pow(1 - p, 3);
@@ -406,15 +415,20 @@
                 showStatus('processing');
 
                 const ext = blob.type.includes('webm') ? 'webm' : 'ogg';
-                const fd  = new FormData();
-                fd.append('audio',       new File([blob], `rekaman.${ext}`, { type: blob.type }));
-                fd.append('id_materi',   idMateri);
+                const fd = new FormData();
+                fd.append('audio', new File([blob], `rekaman.${ext}`, {
+                    type: blob.type
+                }));
+                fd.append('id_materi', idMateri);
                 fd.append('teks_bacaan', teksBacaan);
-                fd.append('_token',      csrfToken);
+                fd.append('_token', csrfToken);
 
                 try {
                     loadingText.textContent = 'Memvalidasi suara...';
-                    const resp = await fetch(routeValidasi, { method: 'POST', body: fd });
+                    const resp = await fetch(routeValidasi, {
+                        method: 'POST',
+                        body: fd
+                    });
                     const data = await resp.json();
                     hideLoading();
 
@@ -444,11 +458,16 @@
             btnMulai.addEventListener('click', async () => {
                 hideError();
                 try {
-                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    audioChunks  = [];
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: true
+                    });
+                    audioChunks = [];
 
-                    const mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/ogg';
-                    mediaRecorder  = new MediaRecorder(stream, { mimeType });
+                    const mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' :
+                        'audio/ogg';
+                    mediaRecorder = new MediaRecorder(stream, {
+                        mimeType
+                    });
 
                     mediaRecorder.ondataavailable = e => {
                         if (e.data.size > 0) audioChunks.push(e.data);
@@ -456,7 +475,9 @@
 
                     mediaRecorder.onstop = () => {
                         stream.getTracks().forEach(t => t.stop());
-                        kirimAudio(new Blob(audioChunks, { type: mimeType }));
+                        kirimAudio(new Blob(audioChunks, {
+                            type: mimeType
+                        }));
                     };
 
                     mediaRecorder.start();
@@ -467,9 +488,9 @@
 
                 } catch (err) {
                     showError(
-                        (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError')
-                            ? 'Izin mikrofon ditolak. Silakan izinkan akses mikrofon di browser kamu.'
-                            : 'Tidak dapat mengakses mikrofon: ' + err.message
+                        (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') ?
+                        'Izin mikrofon ditolak. Silakan izinkan akses mikrofon di browser kamu.' :
+                        'Tidak dapat mengakses mikrofon: ' + err.message
                     );
                 }
             });

@@ -85,8 +85,8 @@
     <div class="rl-card">
 
         {{-- FILTER & SEARCH --}}
-        <div class="d-flex justify-content-end align-items-center gap-2 px-4 pb-4 flex-wrap">
-            <form method="GET" action="{{ route('siswa.riwayat-latihan') }}" class="d-flex align-items-center gap-2 flex-wrap">
+        <div class="d-flex justify-content-start align-items-center gap-2 px-4 pt-4 pb-4 flex-wrap">
+            <form method="GET" action="{{ route('siswa.riwayat-latihan') }}" class="d-flex align-items-center gap-2 flex-wrap rl-filter-form">
 
                 {{-- Dari Tanggal --}}
                 <input type="date" name="date_from" class="rl-select" value="{{ request('date_from') }}"
