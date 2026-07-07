@@ -48,6 +48,10 @@ class MateriController extends Controller
         $request->validate([
             'teks_bacaan' => 'required|string|unique:materi,teks_bacaan',
             'kategori'    => 'required|string|max:255',
+        ], [
+            'teks_bacaan.required' => 'Teks bacaan wajib diisi.',
+            'teks_bacaan.unique'   => 'Teks bacaan sudah digunakan, silakan masukkan kata lain.',
+            'kategori.required'    => 'Kategori materi wajib dipilih.',
         ]);
 
         $materi = Materi::create([
@@ -81,6 +85,11 @@ class MateriController extends Controller
             'teks_bacaan' => 'required|string|unique:materi,teks_bacaan,' . $id . ',id_materi',
             'kategori'    => 'required|in:abjad,suku_kata,kata_dasar',
             'threshold'   => 'required|numeric|min:0|max:1',
+        ], [
+            'teks_bacaan.required' => 'Teks bacaan wajib diisi.',
+            'teks_bacaan.unique'   => 'Teks bacaan sudah digunakan, silakan masukkan kata lain.',
+            'kategori.required'    => 'Kategori materi wajib dipilih.',
+            'threshold.required'   => 'Threshold wajib diisi.',
         ]);
 
         $materi->update([
