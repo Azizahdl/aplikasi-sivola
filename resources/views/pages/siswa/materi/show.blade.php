@@ -322,8 +322,8 @@
                 if (!window.speechSynthesis) return;
                 window.speechSynthesis.cancel();
                 const pesan = benar ?
-                    'Benar! Pengucapanmu sudah tepat. Bagus sekali!' :
-                    'Salah! Pengucapanmu belum tepat. Yuk coba lagi!';
+                    'Benar! :
+                    'Salah! ;
                 const ucap = new SpeechSynthesisUtterance(pesan);
                 ucap.lang = 'id-ID';
                 ucap.rate = 0.95;

@@ -58,21 +58,23 @@
                         </select>
                     </div>
 
-                    {{-- SEARCH --}}
-                    <div class="search-bar">
-                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
-                            <circle cx="6.5" cy="6.5" r="4.5" stroke="#aaa" stroke-width="1.5" />
-                            <path d="M10.5 10.5l3 3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        <input type="text" name="search" placeholder="Cari siswa / materi..."
-                            value="{{ request('search') }}">
+                    {{-- SEARCH + AKSI --}}
+                    <div class="search-actions">
+                        <div class="search-bar">
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                                <circle cx="6.5" cy="6.5" r="4.5" stroke="#aaa" stroke-width="1.5" />
+                                <path d="M10.5 10.5l3 3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                            <input type="text" name="search" placeholder="Cari siswa / materi..."
+                                value="{{ request('search') }}">
+                        </div>
+
+                        <button type="submit" class="btn-cari">Cari</button>
+
+                        @if (request('search') || (request('status') && request('status') != 'semua') || request('date_from') || request('date_to'))
+                            <a href="{{ route('guru.riwayat-latihan') }}" class="btn-reset">Reset</a>
+                        @endif
                     </div>
-
-                    <button type="submit" class="btn-cari">Cari</button>
-
-                    @if (request('search') || (request('status') && request('status') != 'semua') || request('date_from') || request('date_to'))
-                        <a href="{{ route('guru.riwayat-latihan') }}" class="btn-reset">Reset</a>
-                    @endif
                 </form>
             </div>
 

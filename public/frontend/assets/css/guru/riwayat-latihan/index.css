@@ -150,7 +150,6 @@
     outline: none;
     flex: 1;
 }
-
 .btn-cari {
     background: #FF8C42;
     color: white;
@@ -158,6 +157,19 @@
     border-radius: 999px;
     padding: 5px 12px;
     font-size: 11px;
+}
+
+/* Search bar + tombol Cari/Reset digabung jadi 1 unit biar wrap bareng */
+.search-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+}
+
+.search-actions .search-bar {
+    flex: 1 1 220px;
 }
 
 /* ── SHOW ENTRIES ── */
@@ -271,4 +283,134 @@
     color: #ccc;
     background-color: #f7f7f7;
     border-color: #e0e0e0;
+}
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+    .filter-bar {
+        justify-content: flex-start;
+    }
+
+    .search-bar {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-header-custom {
+        padding: 1rem !important;
+    }
+
+    .header-title h4 {
+        font-size: 16px;
+    }
+
+    /* Header: judul & tombol ekspor ditumpuk kalau sempit */
+    .card-header-custom .d-flex {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-toolbar {
+        padding: 12px 1rem;
+    }
+
+    .show-row,
+    .card-footer-custom {
+        padding: 10px 1rem;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 10px 10px;
+        font-size: 12.5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .riwayat-card {
+        border-radius: 10px;
+    }
+
+    .btn-export {
+        width: 100%;
+        justify-content: center;
+        padding: 9px 15px;
+    }
+
+    /* Filter: setiap field full width, ditumpuk ke bawah */
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .filter-date,
+    .dropdown-status {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .search-bar {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .btn-cari {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .btn-reset {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .show-row {
+        font-size: 12px;
+    }
+
+    /* Tabel: tetap scroll horizontal (dari .table-responsive bawaan Bootstrap
+       yang udah ada di blade), font/padding dikecilin dulu */
+    .table-custom {
+        min-width: 520px;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .badge-valid,
+    .badge-invalid {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    /* Footer & pagination ditumpuk vertikal */
+    .card-footer-custom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-footer-custom > div:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pagination .page-link {
+        font-size: 12px;
+        padding: 4px 9px;
+    }
 }

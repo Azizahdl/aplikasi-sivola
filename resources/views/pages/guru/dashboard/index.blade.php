@@ -66,53 +66,59 @@
         <div class="row g-3 mb-3">
 
             <div class="col-12 col-md-4">
-                <div class="stat-card s-orange h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Total Siswa</span>
-                        <div class="stat-icon-box" style="background:var(--primary-light);">
-                            <svg width="18" height="18" fill="none" viewBox="0 0 20 20">
-                                <circle cx="8" cy="6" r="3.5" stroke="#FF8C42" stroke-width="1.5" />
-                                <path d="M1 17c0-3.314 3.134-6 7-6" stroke="#FF8C42" stroke-width="1.5" stroke-linecap="round" />
-                                <path d="M13 13l2 2 3-3" stroke="#FF8C42" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                <a href="{{ route('guru.manajemen-user.index', ['role' => 'siswa']) }}" class="stat-card-link">
+                    <div class="stat-card s-orange h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Total Siswa</span>
+                            <div class="stat-icon-box" style="background:var(--primary-light);">
+                                <svg width="18" height="18" fill="none" viewBox="0 0 20 20">
+                                    <circle cx="8" cy="6" r="3.5" stroke="#FF8C42" stroke-width="1.5" />
+                                    <path d="M1 17c0-3.314 3.134-6 7-6" stroke="#FF8C42" stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M13 13l2 2 3-3" stroke="#FF8C42" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalSiswa ?? 0 }}</div>
+                        <p class="stat-sub">Total seluruh siswa terdaftar</p>
                     </div>
-                    <div class="stat-value">{{ $totalSiswa ?? 0 }}</div>
-                    <p class="stat-sub">Total seluruh siswa terdaftar</p>
-                </div>
+                </a>
             </div>
 
             <div class="col-12 col-md-4">
-                <div class="stat-card s-blue h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Siswa Aktif</span>
-                        <div class="stat-icon-box" style="background:var(--accent-light);">
-                            <svg width="18" height="18" fill="none" viewBox="0 0 20 20">
-                                <circle cx="8" cy="6" r="3.5" stroke="#73A5CA" stroke-width="1.5" />
-                                <path d="M1 17c0-3.314 3.134-6 7-6" stroke="#73A5CA" stroke-width="1.5" stroke-linecap="round" />
-                                <path d="M13 13l2 2 3-3" stroke="#73A5CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                <a href="{{ route('guru.manajemen-user.index', ['role' => 'siswa', 'status' => 'aktif']) }}" class="stat-card-link">
+                    <div class="stat-card s-blue h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Siswa Aktif</span>
+                            <div class="stat-icon-box" style="background:var(--accent-light);">
+                                <svg width="18" height="18" fill="none" viewBox="0 0 20 20">
+                                    <circle cx="8" cy="6" r="3.5" stroke="#73A5CA" stroke-width="1.5" />
+                                    <path d="M1 17c0-3.314 3.134-6 7-6" stroke="#73A5CA" stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M13 13l2 2 3-3" stroke="#73A5CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalSiswaAktif ?? 0 }}</div>
+                        <p class="stat-sub">Status akun aktif</p>
                     </div>
-                    <div class="stat-value">{{ $totalSiswaAktif ?? 0 }}</div>
-                    <p class="stat-sub">Status akun aktif</p>
-                </div>
+                </a>
             </div>
 
             <div class="col-12 col-md-4">
-                <div class="stat-card s-warn h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Siswa Nonaktif</span>
-                        <div class="stat-icon-box" style="background:var(--danger-light);">
-                            <svg width="18" height="18" fill="none" viewBox="0 0 20 20">
-                                <path d="M10 6v5M10 14h.01" stroke="#e05c2a" stroke-width="1.5" stroke-linecap="round" />
-                                <circle cx="10" cy="10" r="8" stroke="#e05c2a" stroke-width="1.5" />
-                            </svg>
+                <a href="{{ route('guru.manajemen-user.index', ['role' => 'siswa', 'status' => 'nonaktif']) }}" class="stat-card-link">
+                    <div class="stat-card s-warn h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Siswa Nonaktif</span>
+                            <div class="stat-icon-box" style="background:var(--danger-light);">
+                                <svg width="18" height="18" fill="none" viewBox="0 0 20 20">
+                                    <path d="M10 6v5M10 14h.01" stroke="#e05c2a" stroke-width="1.5" stroke-linecap="round" />
+                                    <circle cx="10" cy="10" r="8" stroke="#e05c2a" stroke-width="1.5" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalSiswaNonaktif ?? 0 }}</div>
+                        <p class="stat-sub">Status akun nonaktif</p>
                     </div>
-                    <div class="stat-value">{{ $totalSiswaNonaktif ?? 0 }}</div>
-                    <p class="stat-sub">Status akun nonaktif</p>
-                </div>
+                </a>
             </div>
 
         </div>

@@ -286,3 +286,55 @@ body, .db-wrapper {
         max-width: 100%;
     }
 }
+/* ── STAT CARD sebagai link ── */
+.stat-card-link {
+    display: block;
+    text-decoration: none !important;
+    height: 100%;
+    color: inherit;
+}
+
+.stat-card-link,
+.stat-card-link:link,
+.stat-card-link:visited,
+.stat-card-link:hover,
+.stat-card-link:active {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.stat-card-link .stat-card {
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.stat-card-link .stat-label {
+    color: var(--muted) !important;
+    text-decoration: none !important;
+}
+
+.stat-card-link .stat-value {
+    color: var(--dark) !important;
+    text-decoration: none !important;
+}
+
+.stat-card-link .stat-sub {
+    color: var(--muted) !important;
+    text-decoration: none !important;
+}
+
+.stat-card-link:hover .stat-card {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border-color: var(--primary) !important;
+}
+
+.stat-card-link:hover .stat-value {
+    color: var(--primary-dark) !important;
+}
+
+@media (max-width: 768px) {
+    .stat-card-link:hover .stat-card {
+        transform: none;
+    }
+}

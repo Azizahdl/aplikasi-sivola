@@ -288,3 +288,74 @@
     transition: background 0.15s;
 }
 .btn-submit:hover { background: var(--primary-dark); }
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .form-card {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .page-title {
+        font-size: 15px;
+    }
+
+    .btn-back {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .form-card {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .section-label {
+        font-size: 10.5px;
+    }
+
+    .section-divider {
+        margin: 1.25rem 0;
+    }
+
+    /* Baris field yang tadinya col-md-6 (Bootstrap sudah otomatis
+       stack di HP karena grid, ini cuma rapihin jarak & ukuran) */
+    .field-label {
+        font-size: 12.5px;
+    }
+
+    .field-input {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .current-photo img,
+    #photo-preview {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .upload-area {
+        padding: 14px 12px;
+    }
+
+    /* Tombol Batal/Simpan full width, ditumpuk */
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 8px !important;
+    }
+
+    .btn-reset,
+    .btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+}

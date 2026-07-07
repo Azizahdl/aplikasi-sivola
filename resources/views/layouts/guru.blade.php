@@ -133,8 +133,8 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="{{ asset('template-dashboard/images/faces/user.png') }}" alt="profile" />
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                            aria-labelledby="profileDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown"
+                            style="min-width: 180px; max-width: 200px; right: 0; left: auto;">
 
                             <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                 <i class="ti-settings text-primary"></i> Pengaturan

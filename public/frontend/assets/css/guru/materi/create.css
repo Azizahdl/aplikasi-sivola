@@ -1,8 +1,3 @@
-/* =====================================================
-   CREATE MATERI — Modern Clean
-   File: public/frontend/assets/css/guru/materi/create.css
-===================================================== */
-
 :root {
     --primary:       #FF8C42;
     --primary-dark:  #e8650a;
@@ -235,3 +230,59 @@
 }
 .btn-save:hover { background: var(--primary-dark); }
 .btn-save:active { transform: scale(.97); }
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+
+@media (max-width: 576px) {
+    .create-page {
+        max-width: 100%;
+    }
+
+    .create-card {
+        border-radius: 12px;
+    }
+
+    .create-card-header {
+        padding: 1rem;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .create-card-header .header-title h4 {
+        font-size: 15px;
+    }
+
+    .btn-back {
+        font-size: 11.5px;
+        padding: 6px 12px;
+    }
+
+    .create-card-body {
+        padding: 1.25rem 1rem;
+    }
+
+    .form-label-custom {
+        font-size: 12.5px;
+    }
+
+    .textarea-custom {
+        min-height: 100px;
+    }
+
+    .form-divider {
+        margin: 1.1rem 0;
+    }
+
+    /* Footer: tombol Batal & Simpan full width ditumpuk */
+    .create-card-footer {
+        padding: 0.875rem 1rem;
+        flex-direction: column-reverse;
+    }
+
+    .btn-cancel,
+    .btn-save {
+        width: 100%;
+        justify-content: center;
+    }
+}

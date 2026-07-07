@@ -36,69 +36,78 @@
         {{-- STAT CARDS --}}
         <div class="row g-3 mb-3">
             <div class="col-6 col-md-3">
-                <div class="stat-card s-orange h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Materi Dikerjakan</span>
-                        <div class="stat-icon-box" style="background:var(--primary-light);">
-                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#FF8C42"
-                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                <a href="{{ route('siswa.riwayat-latihan') }}" class="stat-card-link">
+                    <div class="stat-card s-orange h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Materi Dikerjakan</span>
+                            <div class="stat-icon-box" style="background:var(--primary-light);">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#FF8C42"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalDikerjakan }}</div>
+                        <p class="stat-sub">dari {{ $totalMateri }} tersedia</p>
                     </div>
-                    <div class="stat-value">{{ $totalDikerjakan }}</div>
-                    <p class="stat-sub">dari {{ $totalMateri }} tersedia</p>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-card s-blue h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Total Latihan</span>
-                        <div class="stat-icon-box" style="background:var(--accent-light);">
-                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke="#73A5CA" stroke-width="1.8" />
-                                <path d="M12 6v6l4 2" stroke="#73A5CA" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                <a href="{{ route('siswa.riwayat-latihan') }}" class="stat-card-link">
+                    <div class="stat-card s-blue h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Total Latihan</span>
+                            <div class="stat-icon-box" style="background:var(--accent-light);">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="#73A5CA" stroke-width="1.8" />
+                                    <path d="M12 6v6l4 2" stroke="#73A5CA" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalLatihan }}</div>
+                        <p class="stat-sub">total percobaan</p>
                     </div>
-                    <div class="stat-value">{{ $totalLatihan }}</div>
-                    <p class="stat-sub">total percobaan</p>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-card s-green h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Jawaban Benar</span>
-                        <div class="stat-icon-box" style="background:var(--success-light);">
-                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke="#3B9E5F" stroke-width="1.8" />
-                                <path d="M7 12l4 4 6-6" stroke="#3B9E5F" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                <a href="{{ route('siswa.riwayat-latihan', ['status' => 'Benar']) }}" class="stat-card-link">
+                    <div class="stat-card s-green h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Jawaban Benar</span>
+                            <div class="stat-icon-box" style="background:var(--success-light);">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="#3B9E5F" stroke-width="1.8" />
+                                    <path d="M7 12l4 4 6-6" stroke="#3B9E5F" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalBenar }}</div>
+                        <p class="stat-sub">pelafalan benar</p>
                     </div>
-                    <div class="stat-value">{{ $totalBenar }}</div>
-                    <p class="stat-sub">pelafalan benar</p>
-                </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-card s-warn h-100">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="stat-label">Jawaban Salah</span>
-                        <div class="stat-icon-box" style="background:var(--danger-light);">
-                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke="#e05c2a" stroke-width="1.8" />
-                                <path d="M15 9l-6 6M9 9l6 6" stroke="#e05c2a" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                <a href="{{ route('siswa.riwayat-latihan', ['status' => 'Salah']) }}" class="stat-card-link">
+                    <div class="stat-card s-warn h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="stat-label">Jawaban Salah</span>
+                            <div class="stat-icon-box" style="background:var(--danger-light);">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="#e05c2a" stroke-width="1.8" />
+                                    <path d="M15 9l-6 6M9 9l6 6" stroke="#e05c2a" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="stat-value">{{ $totalSalah }}</div>
+                        <p class="stat-sub">perlu diperbaiki</p>
                     </div>
-                    <div class="stat-value">{{ $totalSalah }}</div>
-                    <p class="stat-sub">perlu diperbaiki</p>
-                </div>
+                </a>
             </div>
         </div>
+
         {{-- GRAFIK AKTIVITAS MEMBACA --}}
         <div class="row g-3 mb-3">
             <div class="col-12">
