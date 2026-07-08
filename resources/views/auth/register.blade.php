@@ -12,7 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Poppins', Arial, sans-serif;
@@ -76,9 +78,13 @@
             margin: 0 0 0.75rem;
         }
 
-        .section-label.mt { margin-top: 1.25rem; }
+        .section-label.mt {
+            margin-top: 1.25rem;
+        }
 
-        .form-group { margin-bottom: 0.875rem; }
+        .form-group {
+            margin-bottom: 0.875rem;
+        }
 
         .form-group label {
             font-size: 0.78rem;
@@ -92,8 +98,8 @@
             font-size: 0.63rem;
             font-weight: 500;
             color: #5a8fa8;
-            background: rgba(255,255,255,0.5);
-            border: 1px solid rgba(115,165,202,0.4);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(115, 165, 202, 0.4);
             border-radius: 4px;
             padding: 1px 6px;
             margin-left: 5px;
@@ -115,30 +121,33 @@
             z-index: 2;
         }
 
-        .input-wrap .form-control,
         .input-wrap select.form-control {
-            padding: 9px 12px 9px 35px;
-            font-size: 0.82rem;
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: #fff;
-            border: 1px solid #73A5CA;
-            border-radius: 20px;
-            color: #2d3748;
-            height: auto;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-left: 35px;
+            padding-right: 30px;
+            /* biar ga numpuk sama panah custom */
         }
 
-        .input-wrap .form-control:focus,
-        .input-wrap select.form-control:focus {
-            border-color: #fff;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
-            outline: none;
+        /* panah custom, karena appearance:none bikin panah bawaan browser hilang */
+        .input-wrap select.form-control {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2373A5CA' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
         }
 
         .input-wrap .form-control.is-invalid,
-        .input-wrap select.form-control.is-invalid { border-color: #e53e3e; }
+        .input-wrap select.form-control.is-invalid {
+            border-color: #e53e3e;
+        }
 
-        .text-danger { font-size: 0.74rem; margin-top: 4px; display: block; }
+        .text-danger {
+            font-size: 0.74rem;
+            margin-top: 4px;
+            display: block;
+        }
 
         .toggle-eye {
             position: absolute;
@@ -150,7 +159,9 @@
             transition: color 0.2s;
         }
 
-        .toggle-eye:hover { color: #2d5a6e; }
+        .toggle-eye:hover {
+            color: #2d5a6e;
+        }
 
         .row-2col {
             display: grid;
@@ -159,7 +170,9 @@
         }
 
         @media (max-width: 400px) {
-            .row-2col { grid-template-columns: 1fr; }
+            .row-2col {
+                grid-template-columns: 1fr;
+            }
         }
 
         .btn-register {
@@ -177,7 +190,10 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .btn-register:hover { background-color: #fff; color: #E87F24; }
+        .btn-register:hover {
+            background-color: #fff;
+            color: #E87F24;
+        }
 
         .footer-text {
             text-align: center;
@@ -187,17 +203,35 @@
             margin-bottom: 0;
         }
 
-        .footer-text a { color: #2d5a6e; font-weight: 600; text-decoration: none; }
-        .footer-text a:hover { color: #E87F24; }
+        .footer-text a {
+            color: #2d5a6e;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            color: #E87F24;
+        }
 
         @media (max-width: 576px) {
-            .card-register { padding: 1.5rem 1.25rem; }
+            .card-register {
+                padding: 1.5rem 1.25rem;
+            }
         }
 
         @media (max-width: 400px) {
-            body { padding: 1.5rem 0.75rem; }
-            .card-register { padding: 1.25rem 1rem; border-radius: 24px; }
-            .logo-area img { max-width: 60px; }
+            body {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .card-register {
+                padding: 1.25rem 1rem;
+                border-radius: 24px;
+            }
+
+            .logo-area img {
+                max-width: 60px;
+            }
         }
     </style>
 </head>
@@ -217,7 +251,7 @@
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-{{-- 
+                {{-- 
                 <p class="section-label">Informasi Pribadi</p> --}}
 
                 {{-- Nama --}}
@@ -226,8 +260,7 @@
                     <div class="input-wrap">
                         <i class="fas fa-user input-icon"></i>
                         <input id="nama" type="text" name="nama"
-                            class="form-control @error('nama') is-invalid @enderror"
-                            placeholder="Masukkan nama lengkap"
+                            class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan nama lengkap"
                             value="{{ old('nama') }}" required>
                     </div>
                     @error('nama')
@@ -241,8 +274,7 @@
                     <div class="input-wrap">
                         <i class="fas fa-envelope input-icon"></i>
                         <input id="email" type="email" name="email"
-                            class="form-control @error('email') is-invalid @enderror"
-                            placeholder="contoh@email.com"
+                            class="form-control @error('email') is-invalid @enderror" placeholder="contoh@email.com"
                             value="{{ old('email') }}" required>
                     </div>
                     @error('email')
@@ -257,8 +289,7 @@
                         <div class="input-wrap">
                             <i class="fas fa-id-card input-icon"></i>
                             <input id="nis" type="text" name="nis"
-                                class="form-control @error('nis') is-invalid @enderror"
-                                placeholder="Nomor Induk Siswa"
+                                class="form-control @error('nis') is-invalid @enderror" placeholder="Nomor Induk Siswa"
                                 value="{{ old('nis') }}" required>
                         </div>
                         @error('nis')
@@ -271,8 +302,7 @@
                         <div class="input-wrap">
                             <i class="fas fa-id-card-alt input-icon"></i>
                             <input id="nisn" type="text" name="nisn"
-                                class="form-control @error('nisn') is-invalid @enderror"
-                                placeholder="NISN"
+                                class="form-control @error('nisn') is-invalid @enderror" placeholder="NISN"
                                 value="{{ old('nisn') }}">
                         </div>
                         @error('nisn')
@@ -303,8 +333,10 @@
                             <select id="jenis_kelamin" name="jenis_kelamin"
                                 class="form-control @error('jenis_kelamin') is-invalid @enderror" required>
                                 <option value="" disabled selected>Pilih</option>
-                                <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki</option>
-                                <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan</option>
+                                <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki
+                                </option>
+                                <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan
+                                </option>
                             </select>
                         </div>
                         @error('jenis_kelamin')
@@ -323,8 +355,8 @@
                     <div class="input-wrap">
                         <i class="fas fa-lock input-icon"></i>
                         <input id="password" type="password" name="password"
-                            class="form-control @error('password') is-invalid @enderror"
-                            placeholder="Buat password" required>
+                            class="form-control @error('password') is-invalid @enderror" placeholder="Buat password"
+                            required>
                         <span class="toggle-eye" id="togglePassword">
                             <i class="fas fa-eye" id="eyeIcon1"></i>
                         </span>
@@ -340,8 +372,7 @@
                     <div class="input-wrap">
                         <i class="fas fa-lock input-icon"></i>
                         <input id="password_confirmation" type="password" name="password_confirmation"
-                            class="form-control"
-                            placeholder="Ulangi password" required>
+                            class="form-control" placeholder="Ulangi password" required>
                         <span class="toggle-eye" id="togglePasswordConfirm">
                             <i class="fas fa-eye" id="eyeIcon2"></i>
                         </span>
@@ -372,7 +403,9 @@
         }
 
         document.getElementById('togglePassword').addEventListener('click', () => togglePassword('password', 'eyeIcon1'));
-        document.getElementById('togglePasswordConfirm').addEventListener('click', () => togglePassword('password_confirmation', 'eyeIcon2'));
+        document.getElementById('togglePasswordConfirm').addEventListener('click', () => togglePassword(
+            'password_confirmation', 'eyeIcon2'));
     </script>
 </body>
+
 </html>
