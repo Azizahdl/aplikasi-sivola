@@ -110,43 +110,67 @@
             position: relative;
             display: flex;
             align-items: center;
+            border: 1px solid #73A5CA;
+            border-radius: 20px;
+            background-color: #fff;
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .input-wrap:focus-within {
+            border-color: #fff;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .input-wrap.is-invalid {
+            border-color: #e53e3e;
         }
 
         .input-wrap .input-icon {
-            position: absolute;
-            left: 12px;
+            flex-shrink: 0;
+            width: 35px;
+            text-align: center;
             color: #73A5CA;
             font-size: 13px;
             pointer-events: none;
-            z-index: 2;
         }
 
+        .input-wrap .form-control,
+        .input-wrap select.form-control {
+            flex: 1;
+            min-width: 0;
+            border: none !important;
+            border-radius: 0 !important;
+            background-color: transparent !important;
+            padding: 9px 12px 9px 4px;
+            font-size: 0.82rem;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #2d3748;
+            height: auto;
+            box-shadow: none !important;
+        }
+
+        .input-wrap .form-control:focus,
+        .input-wrap select.form-control:focus {
+            outline: none;
+            box-shadow: none !important;
+        }
+
+        /* select: hilangkan tampilan native + kasih ruang buat panah custom */
         .input-wrap select.form-control {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            padding-left: 35px;
             padding-right: 30px;
-            /* biar ga numpuk sama panah custom */
-        }
-
-        /* panah custom, karena appearance:none bikin panah bawaan browser hilang */
-        .input-wrap select.form-control {
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2373A5CA' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
             background-repeat: no-repeat;
-            background-position: right 12px center;
+            background-position: right 10px center;
             background-size: 16px;
         }
 
-        .input-wrap .form-control.is-invalid,
-        .input-wrap select.form-control.is-invalid {
-            border-color: #e53e3e;
-        }
-
-        .text-danger {
-            font-size: 0.74rem;
-            margin-top: 4px;
-            display: block;
+        /* password: kasih ruang di kanan buat icon mata */
+        .input-wrap:has(.toggle-eye) .form-control {
+            padding-right: 32px;
         }
 
         .toggle-eye {
@@ -257,11 +281,10 @@
                 {{-- Nama --}}
                 <div class="form-group">
                     <label for="nama">Nama lengkap</label>
-                    <div class="input-wrap">
+                    <div class="input-wrap @error('nama') is-invalid @enderror">
                         <i class="fas fa-user input-icon"></i>
-                        <input id="nama" type="text" name="nama"
-                            class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan nama lengkap"
-                            value="{{ old('nama') }}" required>
+                        <input id="nama" type="text" name="nama" class="form-control"
+                            placeholder="Masukkan nama lengkap" value="{{ old('nama') }}" required>
                     </div>
                     @error('nama')
                         <span class="text-danger">{{ $message }}</span>
