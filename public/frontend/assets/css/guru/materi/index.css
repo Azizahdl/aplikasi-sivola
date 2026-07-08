@@ -265,9 +265,23 @@
     letter-spacing: 0.5px;
     background: #f7f7F7;
     border-bottom: 0.5px solid #f0f0f0;
-    white-space: nowrap;
+}
+
+.table-custom td {
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 0.5px solid #f2eeea;
+    vertical-align: middle;
+}
+
+/* FIX Safari: overflow/ellipsis wajib di inner div, bukan di th/td langsung */
+.cell-ellipsis {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 .table-custom th.tc,
@@ -1042,5 +1056,14 @@
     .rekam-teks-box {
         font-size: 14px;
         padding: 0.75rem 0.875rem;
+    }
+}
+@media (max-width: 576px) {
+    .table-custom {
+        min-width: 480px;
+    }
+    .table-custom th:nth-child(2),
+    .table-custom td:nth-child(2) {
+        width: 180px; /* kolom Teks Bacaan dikasih lebar pasti */
     }
 }
