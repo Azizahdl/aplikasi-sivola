@@ -72,7 +72,7 @@
                     <p class="status-hint">Tekan tombol di bawah untuk mulai</p>
                 </div>
 
-                <div class="status-recording" id="status-recording">
+                <div class="status-recording" id="status-recording" style="display:none">
                     <div class="recording-pulse">
                         <div class="pulse-ring"></div>
                         <div class="pulse-ring delay"></div>
@@ -109,7 +109,7 @@
                     </svg>
                     Mulai Rekam
                 </button>
-                <button type="button" id="btn-stop" class="btn-rekam btn-stop">
+                <button type="button" id="btn-stop" class="btn-rekam btn-stop" style="display:none">
                     <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
                         <rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor" />
                     </svg>
@@ -117,7 +117,7 @@
                 </button>
             </div>
 
-            <div id="mic-error" class="mic-error">
+            <div id="mic-error" class="mic-error" style="display:none">
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" stroke="#ef4444" stroke-width="1.5" />
                     <path d="M12 8v5M12 16v.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" />
@@ -322,8 +322,8 @@
                 if (!window.speechSynthesis) return;
                 window.speechSynthesis.cancel();
                 const pesan = benar ?
-                    'Benar! :
-                    'Salah! ;
+                    'Benar!' :
+                    'Salah!' ;
                 const ucap = new SpeechSynthesisUtterance(pesan);
                 ucap.lang = 'id-ID';
                 ucap.rate = 0.95;
